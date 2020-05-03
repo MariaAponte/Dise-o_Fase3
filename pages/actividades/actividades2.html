@@ -48,6 +48,91 @@
         </div>
         <div class="content ">
             <h1>ACTIVIDADES 2</h1>
+            <div id="objPricipal" class="alert alert-info" role="alert">
+                Respetado Estudiante Unadista a continuación usted podrá reforzar su conocimientos 
+                con una serie de actividades pedagógicas que le permitiran asimilar mejor los conocimiento recibidos. <strong>Bienvenido</strong>. 
+            </div>
+            <h2><div id="pregunta" class="badge badge-secondary"> </div></h2>
+            <div id="respuestas" ><input name="pp" value="0" type="radio"><label> </label><br><input name="pp" value="1" type="radio"><label>Prueba1</label><br><input name="pp" value="2" type="radio"><label> </label><br><input name="pp" value="3" type="radio"><label>Prueba3</label><br></div>
+
+            <button type="button" class="btn btn-success" onclick="comprobar()">Validar Respuesta</button>
+            </div>
+            <script>
+                    var preguntas = [
+                    "¿Qué son sitios dinámicos?",
+                    "¿Que es Una Pagina Web?",
+                    "¿Que es GITHUB?:",
+                    "¿Que es un sitio estatico:"
+
+                    ];
+                    var respuestas = [
+                    ["Los sitios Web dinámicos son aquellos que permiten crear aplicaciones dentro de la propia Web. ", "los sitios web dinámicos son aquellos que NO acceden a una base de datos para obtener los contenidos y reflejarlo en las páginas del sitio web", "Es una aplicacion", "Todas las anteriores"],
+                    ["página electrónica o página digital a un documento digital de carácter multimediático (es decir, capaz de incluir audio, video, texto y sus combinaciones), adaptado a los estándares de la World Wide Web (WWW)", "Sistema Guia de Bases de Datos", "Sitios para entretenimiento", "pagina para publicar portadas"],
+                    ["Es una plataforma de desarrollo colaborativo de software para alojar proyectos utilizando el sistema de control de versiones Git","Es un editor de programación", "Es una pagina Web", "Es un archivo para crear paginas"],
+                    ["Un sitio estático es aquel que no acceden a una base de datos para obtener el contenido","Es una pagina web","Un sitio estático es aquel que acceden a una base de datos para obtener el contenido","Es una aplicacion"]
+
+                    ];
+            jugar();
+
+                    var indicie_respuesta_correcta;
+
+            function jugar(){
+                            var indice_aleatorio = Math.floor(Math.random()*preguntas.length);
+
+                    var respuestas_posibles = respuestas[indice_aleatorio];
+
+
+                    var posiciones = [0,1,2,3];
+                    var respuestas_reordenadas = [];
+
+                    var respuestaOk = false;
+                    for(i in respuestas_posibles){
+                            var posicion_aleatoria = Math.floor(Math.random()*posiciones.length);
+                            if(posicion_aleatoria==0 && respuestaOk == false){
+                                    indicie_respuesta_correcta =i;
+                                    respuestaOk = true;
+                            }
+                            respuestas_reordenadas[i] = respuestas_posibles[posiciones[posicion_aleatoria]];
+                            posiciones.splice(posicion_aleatoria, 1);
+                    }
+
+                    var txt_respuestas="";
+                    for(i in respuestas_reordenadas){
+                            txt_respuestas += '<input type="radio" name="pp" value="'+i+'"><label>'+respuestas_reordenadas[i]+'</label><br>';
+                    }
+
+                    document.getElementById("respuestas").innerHTML = txt_respuestas;
+                    document.getElementById("pregunta").innerHTML = preguntas[indice_aleatorio];
+
+            }
+            function comprobar(){
+            var respuesta = $("input[type=radio]:checked").val();
+
+            //alert(respuesta);
+            //alert(indicie_respuesta_correcta);
+            if(respuesta ==indicie_respuesta_correcta){
+                    alert("Correcto, Felicitaciones!");
+                    '<div class="alert alert-success" role="alert">'
+                        'Correcto, Felicitaciones!'
+                      '</div>'
+            }else{
+                    alert("Error, Revisa el Material de Estudio.");
+                    '<div class="alert alert-danger" role="alert">'
+                        'Error, Revisa el Material de Estudio.'
+                      '</div>'
+            }
+            jugar();
+            }
+            </script>
+    </div>
+</div>
+<!--Fin fila 3-->
+<div id="fila4" class="row">
+<div class="col-sm-12">
+    <div class="card">
+        <div class="card-header">Test de Conocimientos</div>
+       <div id="trivia" class="card-body">
+        <!--xxxxxxxxxxxxxxx-->
         </div>
         <footer class="footer ">
             <span class="footer_msg "> Este es el pie de página</span>
